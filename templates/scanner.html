@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NIDS | Network Scanner</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">N</div>
+
+            <div>
+                <h1>NIDS</h1>
+                <span>NETWORK SECURITY</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>◈</span>
+                Overview
+            </a>
+
+            <a href="/detections" class="nav-item">
+                <span>◉</span>
+                Detections
+            </a>
+
+            <a href="/traffic" class="nav-item">
+                <span>⌁</span>
+                Traffic
+            </a>
+
+            <a href="/model" class="nav-item">
+                <span>▣</span>
+                Model
+            </a>
+
+            <a href="/scanner" class="nav-item active">
+                <span>⌕</span>
+                Scanner
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <span class="status-dot"></span>
+            Detection engine online
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    NETWORK SECURITY TESTING
+                </p>
+
+                <h2>
+                    Network Flow Scanner
+                </h2>
+
+                <p class="subtitle">
+                    Test a network flow against the trained Random Forest model
+                </p>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+                MODEL READY
+
+            </div>
+
+        </header>
+
+
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="panel-kicker">
+                        MANUAL FLOW ANALYSIS
+                    </p>
+
+                    <h3>
+                        Submit Network Flow
+                    </h3>
+
+                </div>
+
+                <span class="event-count">
+                    RANDOM FOREST
+                </span>
+
+            </div>
+
+
+
+            <form method="POST" class="scanner-form">
+
+    <div class="scanner-grid">
+
+        <div class="input-group">
+
+            <label for="record_number">
+                DATASET RECORD
+            </label>
+
+            <input
+                type="number"
+                id="record_number"
+                name="record_number"
+                min="1"
+                max="9996"
+                placeholder="Enter record 1 - 9996"
+                required
+            >
+
+        </div>
+
+    </div>
+
+    <button type="submit" class="scan-button">
+        ANALYZE NETWORK FLOW
+    </button>
+
+</form>
+
+        </section>
+
+
+
+        {% if result %}
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="panel-kicker">
+                        ANALYSIS RESULT
+                    </p>
+
+                    <h3>
+                        Model Prediction
+                    </h3>
+
+                </div>
+
+            </div>
+
+
+            <div class="scan-result
+                {% if result == 'ATTACK' %}
+                    scan-threat
+                {% else %}
+                    scan-normal
+                {% endif %}
+            ">
+
+
+                <span class="scan-result-label">
+                    CLASSIFICATION
+                </span>
+
+
+                <strong>
+                    {{ result }}
+                </strong>
+
+
+                <span>
+                    MODEL CONFIDENCE: {{ confidence }}
+                </span>
+
+
+            </div>
+
+
+        </section>
+
+        {% endif %}
+
+
+
+        <footer>
+
+            <span>
+                NIDS ENGINE • MANUAL SCANNER
+            </span>
+
+            <span>
+                STATUS: OPERATIONAL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+</body>
+
+</html>

@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import pandas as pd
 import joblib
 
@@ -99,6 +99,42 @@ def traffic():
 def model():
 
     return render_template("model.html")
+@app.route("/scanner", methods=["GET", "POST"])
+def scanner():
+
+    result = None
+    confidence = None
+    record_number = None
+
+    if request.method == "POST":
+
+        record_number = int(request.form["record_number"])
+
+        df = pd.read_csv(DATA_PATH)
+
+        if record_number < 1 or record_number > len(df):
+            return "Invalid record number", 400
+
+        model = joblib.load(MODEL_PATH)
+
+        row = df.drop("Label", axis=1).iloc[[record_number - 1]]
+
+        prediction = model.predict(row)[0]
+        probabilities = model.predict_proba(row)[0]
+
+        confidence = max(probabilities) * 100
+
+        if prediction == 1:
+            result = "ATTACK"
+        else:
+            result = "NORMAL"
+
+    return render_template(
+        "scanner.html",
+        result=result,
+        confidence=f"{confidence:.2f}%" if confidence is not None else None,
+        record_number=record_number
+    )
 
 
 @app.route("/")

@@ -509,3 +509,51 @@ footer {
     font-size: 9px;
     letter-spacing: 0.8px;
 }
+/* =========================
+   SCANNER RESULTS
+========================= */
+
+.scan-result {
+    padding: 28px;
+    border: 1px solid var(--border);
+    background: #0a0d10;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.scan-result-label {
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 1.5px;
+}
+
+.scan-result strong {
+    font-size: 28px;
+    letter-spacing: 1px;
+}
+
+.scan-result span:last-child {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+/* Normal result */
+
+.scan-normal {
+    border-color: #2f8f5b;
+}
+
+.scan-normal strong {
+    color: #5fd18a;
+}
+
+/* Attack result */
+
+.scan-threat {
+    border-color: #b83232;
+}
+
+.scan-threat strong {
+    color: #ff5c5c;
+}

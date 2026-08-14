@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NIDS | Network Security Monitor</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">N</div>
+
+            <div>
+                <h1>NIDS</h1>
+                <span>NETWORK SECURITY</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="#" class="nav-item active">
+                <span>◈</span>
+                Overview
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>◉</span>
+                Detections
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>⌁</span>
+                Traffic
+            </a>
+
+            <a href="#" class="nav-item">
+                <span>▣</span>
+                Model
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            Detection engine online
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">SECURITY OPERATIONS</p>
+
+                <h2>Network Security Monitor</h2>
+
+                <p class="subtitle">
+                    Machine-learning assisted network traffic analysis
+                </p>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span class="stat-label">
+                    TRAFFIC ANALYZED
+                </span>
+
+                <strong>9,996</strong>
+
+                <span class="stat-meta">
+                    NETWORK FLOWS
+                </span>
+            </div>
+
+
+            <div class="stat-card normal-card">
+                <span class="stat-label">
+                    NORMAL TRAFFIC
+                </span>
+
+                <strong>7,957</strong>
+
+                <span class="stat-meta">
+                    BENIGN FLOWS
+                </span>
+            </div>
+
+
+            <div class="stat-card threat-card">
+                <span class="stat-label">
+                    THREATS DETECTED
+                </span>
+
+                <strong>2,039</strong>
+
+                <span class="stat-meta">
+                    SUSPICIOUS FLOWS
+                </span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">
+                    MODEL ACCURACY
+                </span>
+
+                <strong>99.8%</strong>
+
+                <span class="stat-meta">
+                    TEST SET
+                </span>
+            </div>
+
+        </section>
+
+
+        <!-- MAIN GRID -->
+        <section class="dashboard-grid">
+
+
+            <!-- NETWORK ACTIVITY -->
+            <div class="panel activity-panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-kicker">
+                            NETWORK ACTIVITY
+                        </p>
+
+                        <h3>Traffic Analysis</h3>
+                    </div>
+
+                    <span class="live-badge">
+                        LIVE
+                    </span>
+
+                </div>
+
+
+                <div class="chart-placeholder">
+
+                    <div class="chart-grid"></div>
+
+                    <div class="chart-line">
+                        ╱╲___╱╲____╱╲___╱╲____
+                    </div>
+
+                    <div class="chart-label">
+                        TRAFFIC FLOW
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SYSTEM STATUS -->
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+                        <p class="panel-kicker">
+                            ENGINE STATUS
+                        </p>
+
+                        <h3>System Health</h3>
+                    </div>
+
+                </div>
+
+
+                <div class="health-list">
+
+                    <div class="health-item">
+                        <span>Detection Engine</span>
+                        <strong class="online">
+                            ● ACTIVE
+                        </strong>
+                    </div>
+
+                    <div class="health-item">
+                        <span>ML Model</span>
+                        <strong class="online">
+                            ● LOADED
+                        </strong>
+                    </div>
+
+                    <div class="health-item">
+                        <span>Traffic Monitor</span>
+                        <strong class="online">
+                            ● RUNNING
+                        </strong>
+                    </div>
+
+                    <div class="health-item">
+                        <span>Alert System</span>
+                        <strong class="online">
+                            ● READY
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- DETECTIONS -->
+        <section class="panel detections-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <p class="panel-kicker">
+                        SECURITY EVENTS
+                    </p>
+
+                    <h3>Recent Detections</h3>
+                </div>
+
+                <span class="event-count">
+                    03 EVENTS
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>TIME</th>
+                            <th>EVENT</th>
+                            <th>TYPE</th>
+                            <th>SEVERITY</th>
+                            <th>STATUS</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>14:32:08</td>
+
+                            <td>
+                                Infiltration - Portscan
+                            </td>
+
+                            <td>
+                                NETWORK INTRUSION
+                            </td>
+
+                            <td>
+                                <span class="severity high">
+                                    HIGH
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="event-status threat">
+                                    DETECTED
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>14:31:52</td>
+
+                            <td>
+                                Web Attack - Brute Force
+                            </td>
+
+                            <td>
+                                WEB ATTACK
+                            </td>
+
+                            <td>
+                                <span class="severity medium">
+                                    MEDIUM
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="event-status threat">
+                                    DETECTED
+                                </span>
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>14:31:47</td>
+
+                            <td>
+                                Normal network flow
+                            </td>
+
+                            <td>
+                                BENIGN
+                            </td>
+
+                            <td>
+                                <span class="severity low">
+                                    LOW
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="event-status normal">
+                                    CLEAR
+                                </span>
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <span>
+                NIDS ENGINE • LOCAL SECURITY MONITOR
+            </span>
+
+            <span>
+                STATUS: OPERATIONAL
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import pandas as pd
 import joblib
+import json
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -99,6 +101,19 @@ def traffic():
 def model():
 
     return render_template("model.html")
+@app.route("/history")
+def history():
+
+    try:
+        with open("scan_history.json", "r") as file:
+            history_data = json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError):
+        history_data = []
+
+    return render_template(
+        "history.html",
+        history=history_data
+    )
 @app.route("/scanner", methods=["GET", "POST"])
 def scanner():
 
@@ -128,6 +143,26 @@ def scanner():
             result = "ATTACK"
         else:
             result = "NORMAL"
+
+        # Save scan to history
+        try:
+            with open("scan_history.json", "r") as file:
+                history = json.load(file)
+        except (FileNotFoundError, json.JSONDecodeError):
+            history = []
+
+        history.insert(0, {
+            "record": record_number,
+            "result": result,
+            "confidence": f"{confidence:.2f}%",
+            "time": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        })
+
+        # Keep only the latest 20 scans
+        history = history[:20]
+
+        with open("scan_history.json", "w") as file:
+            json.dump(history, file, indent=4)
 
     return render_template(
         "scanner.html",

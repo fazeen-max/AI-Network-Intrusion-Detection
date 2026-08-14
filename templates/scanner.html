@@ -15,11 +15,9 @@
 
 </head>
 
-
 <body>
 
 <div class="app-shell">
-
 
     <aside class="sidebar">
 
@@ -62,6 +60,11 @@
                 Scanner
             </a>
 
+            <a href="/history" class="nav-item">
+                <span>◷</span>
+                History
+            </a>
+
         </nav>
 
 
@@ -92,7 +95,7 @@
                 </h2>
 
                 <p class="subtitle">
-                    Test a network flow against the trained Random Forest model
+                    Test a network-flow record against the trained Random Forest model
                 </p>
 
             </div>
@@ -136,33 +139,35 @@
 
             <form method="POST" class="scanner-form">
 
-    <div class="scanner-grid">
+                <div class="scanner-grid">
 
-        <div class="input-group">
+                    <div class="input-group">
 
-            <label for="record_number">
-                DATASET RECORD
-            </label>
+                        <label for="record_number">
+                            DATASET RECORD
+                        </label>
 
-            <input
-                type="number"
-                id="record_number"
-                name="record_number"
-                min="1"
-                max="9996"
-                placeholder="Enter record 1 - 9996"
-                required
-            >
+                        <input
+                            type="number"
+                            id="record_number"
+                            name="record_number"
+                            min="1"
+                            max="9996"
+                            placeholder="Enter record 1 - 9996"
+                            required
+                        >
 
-        </div>
+                    </div>
 
-    </div>
+                </div>
 
-    <button type="submit" class="scan-button">
-        ANALYZE NETWORK FLOW
-    </button>
 
-</form>
+                <button type="submit" class="scan-button">
+                    ANALYZE NETWORK FLOW
+                </button>
+
+            </form>
+
 
         </section>
 
@@ -239,7 +244,6 @@
     </main>
 
 </div>
-
 
 </body>
 

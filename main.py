@@ -1,15 +1,24 @@
 from flask import Flask, render_template
+import pandas as pd
 
 app = Flask(__name__)
+
+DATA_PATH = "data/processed_nids.csv"
 
 
 @app.route("/")
 def dashboard():
 
+    df = pd.read_csv(DATA_PATH)
+
+    traffic = len(df)
+    normal = int((df["Label"] == "BENIGN").sum())
+    threats = traffic - normal
+
     stats = {
-        "traffic": 9996,
-        "normal": 7957,
-        "threats": 2039,
+        "traffic": traffic,
+        "normal": normal,
+        "threats": threats,
         "accuracy": "99.8%"
     }
 
@@ -20,6 +29,7 @@ def dashboard():
 
 
 if __name__ == "__main__":
+
     print("=" * 55)
     print("🛡️ NIDS WEB DASHBOARD")
     print("=" * 55)
@@ -27,6 +37,4 @@ if __name__ == "__main__":
     print("➡️ Open: http://127.0.0.1:5000")
     print("=" * 55)
 
-    app.run(
-        debug=True
-    )
+    app.run(debug=True)

@@ -92,7 +92,7 @@
                     TRAFFIC ANALYZED
                 </span>
 
-                <strong>9,996</strong>
+                <strong>{{ stats.traffic }}</strong>
 
                 <span class="stat-meta">
                     NETWORK FLOWS
@@ -105,8 +105,7 @@
                     NORMAL TRAFFIC
                 </span>
 
-                <strong>7,957</strong>
-
+                <strong>{{ stats.normal }}</strong>
                 <span class="stat-meta">
                     BENIGN FLOWS
                 </span>
@@ -118,8 +117,7 @@
                     THREATS DETECTED
                 </span>
 
-                <strong>2,039</strong>
-
+                <strong>{{ stats.threats }}</strong>
                 <span class="stat-meta">
                     SUSPICIOUS FLOWS
                 </span>
@@ -131,7 +129,7 @@
                     MODEL ACCURACY
                 </span>
 
-                <strong>99.8%</strong>
+                <strong>{{ stats.accuracy }}</strong>
 
                 <span class="stat-meta">
                     TEST SET

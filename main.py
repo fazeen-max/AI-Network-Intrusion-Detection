@@ -62,6 +62,39 @@ def detections():
         stats=stats,
         detections=detections_list
     )
+@app.route("/traffic")
+def traffic():
+
+    df = pd.read_csv(DATA_PATH)
+
+    normal = int((df["Label"] == 0).sum())
+    threats = int((df["Label"] == 1).sum())
+
+    traffic = len(df)
+
+    threat_percentage = (threats / traffic) * 100
+    normal_percentage = (normal / traffic) * 100
+
+    if threat_percentage >= 20:
+        threat_level = "HIGH"
+    elif threat_percentage >= 5:
+        threat_level = "MEDIUM"
+    else:
+        threat_level = "LOW"
+
+    stats = {
+        "traffic": traffic,
+        "normal": normal,
+        "threats": threats,
+        "normal_percentage": f"{normal_percentage:.1f}%",
+        "threat_percentage": f"{threat_percentage:.1f}%",
+        "threat_level": threat_level
+    }
+
+    return render_template(
+        "traffic.html",
+        stats=stats
+    )
 
 
 @app.route("/")

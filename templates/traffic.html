@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NIDS | Traffic</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">N</div>
+
+            <div>
+                <h1>NIDS</h1>
+                <span>NETWORK SECURITY</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>◈</span>
+                Overview
+            </a>
+
+            <a href="/detections" class="nav-item">
+                <span>◉</span>
+                Detections
+            </a>
+
+            <a href="/traffic" class="nav-item active">
+                <span>⌁</span>
+                Traffic
+            </a>
+
+            <a href="/model" class="nav-item">
+                <span>▣</span>
+                Model
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            Traffic monitor online
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">NETWORK TELEMETRY</p>
+
+                <h2>Traffic Monitor</h2>
+
+                <p class="subtitle">
+                    Network flow statistics from the analyzed dataset
+                </p>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span class="stat-label">
+                    TOTAL FLOWS
+                </span>
+
+                <strong>{{ stats.traffic }}</strong>
+
+                <span class="stat-meta">
+                    ANALYZED RECORDS
+                </span>
+            </div>
+
+
+            <div class="stat-card normal-card">
+                <span class="stat-label">
+                    NORMAL FLOWS
+                </span>
+
+                <strong>{{ stats.normal }}</strong>
+
+                <span class="stat-meta">
+                    BENIGN TRAFFIC
+                </span>
+            </div>
+
+
+            <div class="stat-card threat-card">
+                <span class="stat-label">
+                    ATTACK FLOWS
+                </span>
+
+                <strong>{{ stats.threats }}</strong>
+
+                <span class="stat-meta">
+                    SUSPICIOUS TRAFFIC
+                </span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">
+                    THREAT RATE
+                </span>
+
+                <strong>{{ stats.threat_percentage }}</strong>
+
+                <span class="stat-meta">
+                    OF TOTAL FLOWS
+                </span>
+            </div>
+
+        </section>
+
+
+        <section class="panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <p class="panel-kicker">
+                        TRAFFIC BREAKDOWN
+                    </p>
+
+                    <h3>Network Flow Distribution</h3>
+                </div>
+
+                <span class="event-count">
+                    DATASET ANALYSIS
+                </span>
+
+            </div>
+
+
+            <div class="traffic-summary">
+
+                <div class="traffic-summary-row">
+
+                    <div>
+                        <span>NORMAL TRAFFIC</span>
+                        <strong>{{ stats.normal }}</strong>
+                    </div>
+
+                    <div>
+                        <span>{{ stats.normal_percentage }}</span>
+                    </div>
+
+                </div>
+
+
+                <div class="traffic-summary-row">
+
+                    <div>
+                        <span>ATTACK TRAFFIC</span>
+                        <strong>{{ stats.threats }}</strong>
+                    </div>
+
+                    <div>
+                        <span>{{ stats.threat_percentage }}</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <span>
+                NIDS ENGINE • TRAFFIC MONITOR
+            </span>
+
+            <span>
+                STATUS: OPERATIONAL
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NIDS | Model Intelligence</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+<div class="app-shell">
+
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-mark">N</div>
+
+            <div>
+                <h1>NIDS</h1>
+                <span>NETWORK SECURITY</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>◈</span>
+                Overview
+            </a>
+
+            <a href="/detections" class="nav-item">
+                <span>◉</span>
+                Detections
+            </a>
+
+            <a href="/traffic" class="nav-item">
+                <span>⌁</span>
+                Traffic
+            </a>
+
+            <a href="/model" class="nav-item active">
+                <span>▣</span>
+                Model
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <span class="status-dot"></span>
+            ML engine online
+
+        </div>
+
+    </aside>
+
+
+
+    <main class="main-content">
+
+
+        <header class="topbar">
+
+            <div>
+
+                <p class="eyebrow">
+                    MACHINE LEARNING ENGINE
+                </p>
+
+                <h2>
+                    Model Intelligence
+                </h2>
+
+                <p class="subtitle">
+                    Random Forest intrusion detection model performance
+                </p>
+
+            </div>
+
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+                MODEL ACTIVE
+
+            </div>
+
+        </header>
+
+
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    MODEL
+                </span>
+
+                <strong>
+                    RANDOM FOREST
+                </strong>
+
+                <span class="stat-meta">
+                    CLASSIFICATION ENGINE
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    ACCURACY
+                </span>
+
+                <strong>
+                    99.8%
+                </strong>
+
+                <span class="stat-meta">
+                    TEST SET
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    TRAINING SAMPLES
+                </span>
+
+                <strong>
+                    7,996
+                </strong>
+
+                <span class="stat-meta">
+                    80% DATA SPLIT
+                </span>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span class="stat-label">
+                    TEST SAMPLES
+                </span>
+
+                <strong>
+                    2,000
+                </strong>
+
+                <span class="stat-meta">
+                    20% DATA SPLIT
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="panel-kicker">
+                        MODEL PERFORMANCE
+                    </p>
+
+                    <h3>
+                        Classification Results
+                    </h3>
+
+                </div>
+
+                <span class="event-count">
+                    VERIFIED
+                </span>
+
+            </div>
+
+
+
+            <div class="model-performance-grid">
+
+
+                <div class="performance-item">
+
+                    <span>
+                        NORMAL PRECISION
+                    </span>
+
+                    <strong>
+                        1.00
+                    </strong>
+
+                </div>
+
+
+                <div class="performance-item">
+
+                    <span>
+                        NORMAL RECALL
+                    </span>
+
+                    <strong>
+                        1.00
+                    </strong>
+
+                </div>
+
+
+                <div class="performance-item">
+
+                    <span>
+                        ATTACK PRECISION
+                    </span>
+
+                    <strong>
+                        1.00
+                    </strong>
+
+                </div>
+
+
+                <div class="performance-item">
+
+                    <span>
+                        ATTACK RECALL
+                    </span>
+
+                    <strong>
+                        0.99
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <section class="panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <p class="panel-kicker">
+                        FEATURE IMPORTANCE
+                    </p>
+
+                    <h3>
+                        Top Network Features
+                    </h3>
+
+                </div>
+
+                <span class="event-count">
+                    RANDOM FOREST
+                </span>
+
+            </div>
+
+
+
+            <div class="feature-list">
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Average Packet Size
+                    </span>
+
+                    <strong>
+                        0.0808
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Packet Length Mean
+                    </span>
+
+                    <strong>
+                        0.0799
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Fwd Packet Length Max
+                    </span>
+
+                    <strong>
+                        0.0726
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Flow Bytes/s
+                    </span>
+
+                    <strong>
+                        0.0711
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Total Length of Fwd Packet
+                    </span>
+
+                    <strong>
+                        0.0710
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Packet Length Max
+                    </span>
+
+                    <strong>
+                        0.0708
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Fwd Packet Length Mean
+                    </span>
+
+                    <strong>
+                        0.0620
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Bwd Segment Size Avg
+                    </span>
+
+                    <strong>
+                        0.0536
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Subflow Fwd Bytes
+                    </span>
+
+                    <strong>
+                        0.0530
+                    </strong>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <span>
+                        Fwd Segment Size Avg
+                    </span>
+
+                    <strong>
+                        0.0441
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <footer>
+
+            <span>
+                NIDS ENGINE • MODEL INTELLIGENCE
+            </span>
+
+            <span>
+                STATUS: OPERATIONAL
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+</body>
+
+</html>

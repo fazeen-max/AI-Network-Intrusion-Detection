@@ -95,6 +95,10 @@ def traffic():
         "traffic.html",
         stats=stats
     )
+@app.route("/model")
+def model():
+
+    return render_template("model.html")
 
 
 @app.route("/")

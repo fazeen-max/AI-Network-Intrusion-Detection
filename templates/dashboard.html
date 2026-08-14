@@ -273,87 +273,53 @@
 
                     <tbody>
 
-                        <tr>
+{% for detection in detections %}
 
-                            <td>14:32:08</td>
+<tr>
 
-                            <td>
-                                Infiltration - Portscan
-                            </td>
+    <td>
+        LIVE
+    </td>
 
-                            <td>
-                                NETWORK INTRUSION
-                            </td>
+    <td>
+        {{ detection.result }}
+    </td>
 
-                            <td>
-                                <span class="severity high">
-                                    HIGH
-                                </span>
-                            </td>
+    <td>
+        ML CLASSIFICATION
+    </td>
 
-                            <td>
-                                <span class="event-status threat">
-                                    DETECTED
-                                </span>
-                            </td>
+    <td>
+        <span class="severity
+        {% if detection.severity == 'HIGH' %}
+            high
+        {% elif detection.severity == 'MEDIUM' %}
+            medium
+        {% else %}
+            low
+        {% endif %}
+        ">
+            {{ detection.severity }}
+        </span>
+    </td>
 
-                        </tr>
+    <td>
+        <span class="event-status
+        {% if detection.result == 'ATTACK' %}
+            threat
+        {% else %}
+            normal
+        {% endif %}
+        ">
+            {{ detection.confidence }}
+        </span>
+    </td>
 
+</tr>
 
-                        <tr>
+{% endfor %}
 
-                            <td>14:31:52</td>
-
-                            <td>
-                                Web Attack - Brute Force
-                            </td>
-
-                            <td>
-                                WEB ATTACK
-                            </td>
-
-                            <td>
-                                <span class="severity medium">
-                                    MEDIUM
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="event-status threat">
-                                    DETECTED
-                                </span>
-                            </td>
-
-                        </tr>
-
-
-                        <tr>
-
-                            <td>14:31:47</td>
-
-                            <td>
-                                Normal network flow
-                            </td>
-
-                            <td>
-                                BENIGN
-                            </td>
-
-                            <td>
-                                <span class="severity low">
-                                    LOW
-                                </span>
-                            </td>
-
-                            <td>
-                                <span class="event-status normal">
-                                    CLEAR
-                                </span>
-                            </td>
-
-                        </tr>
-
-                    </tbody>
+</tbody>
 
                 </table>
 

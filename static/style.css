@@ -476,3 +476,36 @@ footer {
         gap: 15px;
     }
 }
+/* =========================
+   MODEL SUMMARY
+========================= */
+
+.model-summary {
+    border: 1px solid var(--border);
+    background: #0a0d10;
+    margin-bottom: 16px;
+}
+
+.model-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 13px;
+    border-bottom: 1px solid var(--border);
+}
+
+.model-summary-row:last-child {
+    border-bottom: none;
+}
+
+.model-summary-row span {
+    color: var(--muted);
+    font-size: 8px;
+    letter-spacing: 1.2px;
+}
+
+.model-summary-row strong {
+    color: var(--text);
+    font-size: 9px;
+    letter-spacing: 0.8px;
+}

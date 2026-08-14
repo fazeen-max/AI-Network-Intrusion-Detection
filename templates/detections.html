@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NIDS | Detections</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-mark">N</div>
+
+            <div>
+                <h1>NIDS</h1>
+                <span>NETWORK SECURITY</span>
+            </div>
+        </div>
+
+        <nav class="navigation">
+
+            <a href="/" class="nav-item">
+                <span>◈</span>
+                Overview
+            </a>
+
+            <a href="/detections" class="nav-item active">
+                <span>◉</span>
+                Detections
+            </a>
+
+            <a href="/traffic" class="nav-item">
+                <span>⌁</span>
+                Traffic
+            </a>
+
+            <a href="/model" class="nav-item">
+                <span>▣</span>
+                Model
+            </a>
+
+        </nav>
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            Detection engine online
+        </div>
+
+    </aside>
+
+
+    <main class="main-content">
+
+        <header class="topbar">
+
+            <div>
+                <p class="eyebrow">SECURITY OPERATIONS</p>
+
+                <h2>Detection Center</h2>
+
+                <p class="subtitle">
+                    Network intrusion events identified by the detection system
+                </p>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                SYSTEM ONLINE
+            </div>
+
+        </header>
+
+
+        <section class="stats-grid">
+
+            <div class="stat-card threat-card">
+                <span class="stat-label">
+                    THREATS DETECTED
+                </span>
+
+                <strong>{{ stats.threats }}</strong>
+
+                <span class="stat-meta">
+                    ATTACK FLOWS
+                </span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">
+                    THREAT RATE
+                </span>
+
+                <strong>{{ stats.threat_percentage }}</strong>
+
+                <span class="stat-meta">
+                    OF ANALYZED TRAFFIC
+                </span>
+            </div>
+
+
+            <div class="stat-card">
+                <span class="stat-label">
+                    SECURITY LEVEL
+                </span>
+
+                <strong>{{ stats.threat_level }}</strong>
+
+                <span class="stat-meta">
+                    CURRENT DATASET
+                </span>
+            </div>
+
+
+            <div class="stat-card normal-card">
+                <span class="stat-label">
+                    NORMAL FLOWS
+                </span>
+
+                <strong>{{ stats.normal }}</strong>
+
+                <span class="stat-meta">
+                    BENIGN TRAFFIC
+                </span>
+            </div>
+
+        </section>
+
+
+        <section class="panel detections-panel">
+
+            <div class="panel-header">
+
+                <div>
+                    <p class="panel-kicker">
+                        MACHINE LEARNING DETECTIONS
+                    </p>
+
+                    <h3>Recent Model Predictions</h3>
+                </div>
+
+                <span class="event-count">
+                    {{ detections|length }} RECORDS
+                </span>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>RECORD</th>
+                            <th>PREDICTION</th>
+                            <th>CLASSIFICATION</th>
+                            <th>SEVERITY</th>
+                            <th>CONFIDENCE</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    {% for detection in detections %}
+
+                        <tr>
+
+                            <td>
+                                #{{ loop.index }}
+                            </td>
+
+                            <td>
+                                {{ detection.result }}
+                            </td>
+
+                            <td>
+                                ML CLASSIFICATION
+                            </td>
+
+                            <td>
+
+                                <span class="severity
+                                {% if detection.severity == 'HIGH' %}
+                                    high
+                                {% elif detection.severity == 'MEDIUM' %}
+                                    medium
+                                {% else %}
+                                    low
+                                {% endif %}
+                                ">
+
+                                    {{ detection.severity }}
+
+                                </span>
+
+                            </td>
+
+                            <td>
+
+                                <span class="event-status
+                                {% if detection.result == 'ATTACK' %}
+                                    threat
+                                {% else %}
+                                    normal
+                                {% endif %}
+                                ">
+
+                                    {{ detection.confidence }}
+
+                                </span>
+
+                            </td>
+
+                        </tr>
+
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            <span>
+                NIDS ENGINE • DETECTION CENTER
+            </span>
+
+            <span>
+                STATUS: OPERATIONAL
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+</body>
+</html>

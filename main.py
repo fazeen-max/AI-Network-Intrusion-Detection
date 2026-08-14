@@ -6,6 +6,62 @@ app = Flask(__name__)
 
 DATA_PATH = "data/processed_nids.csv"
 MODEL_PATH = "models/random_forest_nids.joblib"
+@app.route("/detections")
+def detections():
+
+    df = pd.read_csv(DATA_PATH)
+
+    normal = int((df["Label"] == 0).sum())
+    threats = int((df["Label"] == 1).sum())
+
+    threat_percentage = (threats / len(df)) * 100
+
+    if threat_percentage >= 20:
+        threat_level = "HIGH"
+    elif threat_percentage >= 5:
+        threat_level = "MEDIUM"
+    else:
+        threat_level = "LOW"
+
+    model = joblib.load(MODEL_PATH)
+
+    X = df.drop("Label", axis=1)
+
+    predictions = model.predict(X)
+    probabilities = model.predict_proba(X)
+
+    detections_list = []
+
+    for i in range(min(10, len(df))):
+
+        prediction = predictions[i]
+        confidence = max(probabilities[i]) * 100
+
+        if prediction == "ATTACK":
+            result = "ATTACK"
+            severity = "HIGH"
+        else:
+            result = "NORMAL"
+            severity = "LOW"
+
+        detections_list.append({
+            "result": result,
+            "confidence": f"{confidence:.2f}%",
+            "severity": severity
+        })
+
+    stats = {
+        "normal": normal,
+        "threats": threats,
+        "threat_percentage": f"{threat_percentage:.1f}%",
+        "threat_level": threat_level
+    }
+
+    return render_template(
+        "detections.html",
+        stats=stats,
+        detections=detections_list
+    )
 
 
 @app.route("/")
